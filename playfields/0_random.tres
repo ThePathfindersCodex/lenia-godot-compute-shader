@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LeniaPlayfield" load_steps=2 format=3 uid="uid://csucbsve4hwj3"]
+
+[ext_resource type="Script" path="res://LeniaPlayfield.gd" id="1_kc2rw"]
+
+[resource]
+script = ExtResource("1_kc2rw")
+name = "Random"
+amplitudes = Array[float]([1.0])
+k_radius = 13
+frequency_scale = 100
+growth_m = 0.15
+growth_s = 0.015
+pattern = []

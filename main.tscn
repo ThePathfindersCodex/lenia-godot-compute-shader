@@ -1,0 +1,263 @@
+[gd_scene load_steps=4 format=3 uid="uid://ylwo7olsajsg"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_u4ar6"]
+[ext_resource type="Script" path="res://ComputeLeniaGrid.gd" id="2_6w5pi"]
+[ext_resource type="Script" path="res://LabelFPS.gd" id="3_l2x5v"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_u4ar6")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="ComputeLeniaGrid" type="TextureRect" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_6w5pi")
+
+[node name="ComputeKernelGrid" type="TextureRect" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ComputeGrowthGrid" type="TextureRect" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ComputeWeightSumGrid" type="TextureRect" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxControls" type="VBoxContainer" parent="."]
+offset_left = 842.0
+offset_top = 38.0
+offset_right = 993.0
+offset_bottom = 145.0
+
+[node name="ButtonStartStop" type="Button" parent="VBoxControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start/Stop"
+
+[node name="ButtonStep" type="Button" parent="VBoxControls"]
+layout_mode = 2
+text = "Step"
+
+[node name="ButtonRestart" type="Button" parent="VBoxControls"]
+layout_mode = 2
+text = "Restart"
+
+[node name="VBoxPlayfields" type="VBoxContainer" parent="."]
+offset_left = 842.0
+offset_top = 146.0
+offset_right = 1168.0
+offset_bottom = 275.0
+
+[node name="OptPreloads" type="OptionButton" parent="VBoxPlayfields"]
+layout_mode = 2
+item_count = 13
+selected = 1
+allow_reselect = true
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "Orbium"
+popup/item_1/id = 1
+popup/item_2/text = "Shimmer"
+popup/item_2/id = 2
+popup/item_3/text = "Chain"
+popup/item_3/id = 3
+popup/item_4/text = "Star"
+popup/item_4/id = 4
+popup/item_5/text = "Orbium 2"
+popup/item_5/id = 5
+popup/item_6/text = "Spinner"
+popup/item_6/id = 6
+popup/item_7/text = "Shifter"
+popup/item_7/id = 7
+popup/item_8/text = "Conway"
+popup/item_8/id = 8
+popup/item_9/text = "Orbium 3"
+popup/item_9/id = 9
+popup/item_10/text = "Hex Rotate"
+popup/item_10/id = 10
+popup/item_11/text = "Giant Spinner"
+popup/item_11/id = 11
+popup/item_12/text = "Wow"
+popup/item_12/id = 12
+
+[node name="VBoxConfigLock" type="VBoxContainer" parent="."]
+offset_left = 1023.0
+offset_top = 37.0
+offset_right = 1157.0
+offset_bottom = 132.0
+theme_override_constants/separation = 1
+
+[node name="lockPlayfield" type="CheckBox" parent="VBoxConfigLock"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lock Playfield"
+
+[node name="lockKernel" type="CheckBox" parent="VBoxConfigLock"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lock Kernel"
+
+[node name="lockConfig" type="CheckBox" parent="VBoxConfigLock"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lock Config"
+
+[node name="VBoxConfig" type="VBoxContainer" parent="."]
+offset_left = 862.0
+offset_top = 245.0
+offset_right = 1134.0
+offset_bottom = 496.0
+theme_override_constants/separation = 39
+
+[node name="HSKernelRadius" type="HSlider" parent="VBoxConfig"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 50.0
+value = 13.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxConfig"]
+layout_mode = 2
+
+[node name="HSTimeScale" type="HSlider" parent="VBoxConfig"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 200.0
+value = 100.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="HSGrowthCenter" type="HSlider" parent="VBoxConfig"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.15
+tick_count = 5
+ticks_on_borders = true
+
+[node name="HSGrowthWidth" type="HSlider" parent="VBoxConfig"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.015
+tick_count = 5
+ticks_on_borders = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxConfig"]
+layout_mode = 2
+
+[node name="OptColors" type="OptionButton" parent="VBoxConfig"]
+layout_mode = 2
+item_count = 5
+selected = 4
+allow_reselect = true
+popup/item_0/text = "Grayscale"
+popup/item_0/id = 0
+popup/item_1/text = "Red Blue"
+popup/item_1/id = 1
+popup/item_2/text = "Plasma"
+popup/item_2/id = 2
+popup/item_3/text = "Viridis"
+popup/item_3/id = 3
+popup/item_4/text = "Jet"
+popup/item_4/id = 4
+
+[node name="VBoxConfigLabels" type="VBoxContainer" parent="."]
+offset_left = 1145.0
+offset_top = 243.0
+offset_right = 1185.0
+offset_bottom = 645.0
+theme_override_constants/separation = 34
+
+[node name="labelKernelRadius" type="Label" parent="VBoxConfigLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxConfigLabels"]
+layout_mode = 2
+
+[node name="labelTimeScale" type="Label" parent="VBoxConfigLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="labelGrowthCenter" type="Label" parent="VBoxConfigLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="labelGrowthWidth" type="Label" parent="VBoxConfigLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxConfigLabels"]
+layout_mode = 2
+
+[node name="staticLabel" type="Label" parent="."]
+offset_left = 829.0
+offset_top = 196.0
+offset_right = 1171.0
+offset_bottom = 807.0
+theme_override_constants/line_spacing = 3
+text = "
+Space
+
+
+
+Time
+
+Mu (center)
+
+Sigma (width)
+
+
+Colors
+"
+
+[node name="labelKernelAmp" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 413.0
+offset_top = 370.0
+offset_right = 485.0
+offset_bottom = 421.0
+text = "[]"
+
+[node name="labelMouseOverPixel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 867.0
+offset_top = 585.0
+offset_right = 939.0
+offset_bottom = 636.0
+text = "()"
+
+[node name="labelFPS" type="Label" parent="."]
+offset_left = 867.0
+offset_top = 610.0
+offset_right = 907.0
+offset_bottom = 633.0
+script = ExtResource("3_l2x5v")
+
+[connection signal="pressed" from="VBoxControls/ButtonStartStop" to="." method="_on_button_start_stop_pressed"]
+[connection signal="pressed" from="VBoxControls/ButtonStep" to="." method="_on_button_step_pressed"]
+[connection signal="pressed" from="VBoxControls/ButtonRestart" to="." method="_on_button_restart_pressed"]
+[connection signal="item_selected" from="VBoxPlayfields/OptPreloads" to="." method="_on_opt_preloads_item_selected"]
+[connection signal="value_changed" from="VBoxConfig/HSKernelRadius" to="." method="_on_hs_kernel_radius_value_changed"]
+[connection signal="value_changed" from="VBoxConfig/HSTimeScale" to="." method="_on_hs_time_scale_value_changed"]
+[connection signal="value_changed" from="VBoxConfig/HSGrowthCenter" to="." method="_on_hs_growth_center_value_changed"]
+[connection signal="value_changed" from="VBoxConfig/HSGrowthWidth" to="." method="_on_hs_growth_width_value_changed"]
+[connection signal="item_selected" from="VBoxConfig/OptColors" to="." method="_on_opt_colors_item_selected"]
